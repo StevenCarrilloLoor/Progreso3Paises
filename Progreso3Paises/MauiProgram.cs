@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using Progreso3Paises.Repositories;
 
 namespace Progreso3Paises
 {
@@ -18,7 +19,8 @@ namespace Progreso3Paises
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
-
+            string dbPath = FileAccessHelper.GetLocalFilePath("Paises.DB");
+            builder.Services.AddSingleton<CountryRepo>(s => ActivatorUtilities.CreateInstance<CountryRepo>(s, dbPath));
             return builder.Build();
         }
     }

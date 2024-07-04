@@ -1,0 +1,21 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Progreso3Paises.Views.CountryView"
+             Title="CountryView">
+    <VerticalStackLayout>
+        <ListView ItemsSource="{Binding Model}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="{Binding Name}" />
+                            <Label Text="{Binding Code}" />
+                            <Button Text="Actualizar Status" Command="{Binding Source={RelativeSource AncestorType={x:Type local:CountryViewModel}}, Path=ComandoEditarPais}" CommandParameter="{Binding .}" />
+                            <Button Text="Eliminar" Command="{Binding Source={RelativeSource AncestorType={x:Type local:CountryViewModel}}, Path=ComandoEliminarPais}" CommandParameter="{Binding .}" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </VerticalStackLayout>
+</ContentPage>
